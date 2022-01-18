@@ -9,6 +9,7 @@ const MiddValidateAge = require('./Middlewares/MiddValidateAge');
 const MiddValidateDate = require('./Middlewares/MiddValidateDate');
 const MiddValidateRate = require('./Middlewares/MiddValidateRate');
 const MiddRegisterUser = require('./Middlewares/MiddRegisterUser');
+const MiddEdit = require('./Middlewares/MiddEdit');
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,6 +32,13 @@ MiddValidateAge,
 MiddValidateDate,
 MiddValidateRate,
 MiddRegisterUser);
+app.put('/talker/:id',
+MiddvalidatesToken,
+MiddValidateUser,
+MiddValidateAge,
+MiddValidateDate,
+MiddValidateRate,
+MiddEdit);
 
 app.listen(PORT, () => {
   console.log('Online');
