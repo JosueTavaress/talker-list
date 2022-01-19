@@ -11,12 +11,15 @@ const MiddValidateRate = require('./Middlewares/MiddValidateRate');
 const MiddRegisterUser = require('./Middlewares/MiddRegisterUser');
 const MiddEdit = require('./Middlewares/MiddEdit');
 const MiddDeletUser = require('./Middlewares/MiddDeletUser');
+const MiddQuerySearch = require('./Middlewares/MiddQuerySearch');
 
 const app = express();
 app.use(bodyParser.json());
 
 const HTTP_OK_STATUS = 200;
 const PORT = '3000';
+
+app.get('/talker/search', MiddvalidatesToken, MiddQuerySearch);
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
