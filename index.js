@@ -12,6 +12,7 @@ const MiddRegisterUser = require('./Middlewares/MiddRegisterUser');
 const MiddEdit = require('./Middlewares/MiddEdit');
 const MiddDeletUser = require('./Middlewares/MiddDeletUser');
 const MiddQuerySearch = require('./Middlewares/MiddQuerySearch');
+const MiddvalidadeExisRD = require('./Middlewares/MiddvalidadeExisRD');
 
 const app = express();
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ MiddValidateUser,
 MiddValidateAge,
 MiddValidateDate,
 MiddValidateRate,
+MiddvalidadeExisRD,
 MiddRegisterUser);
 
 app.put('/talker/:id',

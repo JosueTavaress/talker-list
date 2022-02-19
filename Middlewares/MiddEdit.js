@@ -1,16 +1,15 @@
 const fs = require('fs');
+const characters = require('../models/characters');
 
 module.exports = async (request, response) => {
   const { name, age, talk: { watchedAt, rate } } = request.body;
   const { id } = request.params;
   const userId = Number(id);
 
-  const talkersList = await fs.promises.readFile('./talker.json', 'utf-8');
-  const arrayListTalkers = JSON.parse(talkersList);
+  const talker = await characters.getAll();
 
-  const Newtalkers = arrayListTalkers.filter((el) => el.id !== userId);
-  const useExist = arrayListTalkers.find((el) => el.id === userId);
-
+  const Newtalkers = talker.filter((el) => el.id !== userId);
+  const useExist = talker.find((el) => el.id === userId);
   if (!useExist) return response.status(400).send('não existe esse user');
   Newtalkers.push({ id: userId, name, age, talk: { watchedAt, rate } });
 
